@@ -38,8 +38,8 @@ export default function RootLayout({
             <Navbar />
             <div className="min-h-[50vh]">
 
+              {children}
             </div>
-            {children}
 
             <Footer />
           </ReactQueryProvider>
