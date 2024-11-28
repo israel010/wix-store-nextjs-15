@@ -23,14 +23,14 @@ export default function Orders() {
   const orders = data?.pages.flatMap((page) => page.orders) || [];
 
   return (
-    <div className="space-y-5">
-      <h2 className="text-2xl font-bold">Your orders</h2>
+    <div className="space-y-5 mx-auto">
+      <h2 className=" text-center text-2xl font-bold">Your orders</h2>
       {status === "pending" && <OrdersLoadingSkeleton />}
       {status === "error" && (
         <p className="text-destructive">Error fetching orders</p>
       )}
       {status === "success" && !orders.length && !hasNextPage && (
-        <p>No orders yet</p>
+        <p className="text-center">No orders yet</p>
       )}
       {orders.map((order) => (
         <Order key={order.number} order={order} />
