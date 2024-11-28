@@ -36,6 +36,9 @@ export default function RootLayout({
           <ReactQueryProvider>
 
             <Navbar />
+            <div className="min-h-[50vh]">
+
+            </div>
             {children}
 
             <Footer />
