@@ -27,7 +27,7 @@ async function CollectionsLayout({ children, params: { slug } }: LayoutProps) {
 
     const banner = collection.media?.mainMedia?.image;
 
-    return <main className="w-[1280px] mx-auto space-y-10 px-5 py-10">
+    return <main className="max-w-7xl mx-auto space-y-10 px-5 py-10">
         <div className="flex flex-col gap-10 ">
             {banner && (
                 <div className="relative hidden md:block">
@@ -35,6 +35,7 @@ async function CollectionsLayout({ children, params: { slug } }: LayoutProps) {
                         mediaIdentifier={banner.url}
                         width={1280}
                         height={400}
+                        scaleToFill={true}
                         alt={banner.altText}
 
                     />

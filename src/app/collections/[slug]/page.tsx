@@ -54,12 +54,14 @@ interface ProductsProps {
   collectionId: string,
   page: number
 }
+
+
 async function Products({ collectionId, page }: ProductsProps) {
 
 
   const pageSize = 8;
 
-  const collectionProdcts = await queryProducts(getWixServerClient(),
+  const collectionProducts = await queryProducts(getWixServerClient(),
     {
       collectionIds: collectionId,
       limit: pageSize,
@@ -68,18 +70,21 @@ async function Products({ collectionId, page }: ProductsProps) {
 
   if (!collectionId.length) notFound();
 
-  if (page > (collectionProdcts.totalPages || 1)) notFound()
+  if (page > (collectionProducts.totalPages || 1)) notFound()
   return (
     <div className="space-y-10">
 
-      <div className="flex flex-col sm:grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-4">
+      <div className=" flex flex-col  grid-cols-2  gap-5 sm:grid md:grid-cols-3 lg:grid-cols-4">
 
-        {collectionProdcts.items.map(product => <Product key={product._id} product={product} />)}
+        {collectionProducts.items.map(product =>
+          <Product
+            key={product._id}
+            product={product} />)}
 
       </div>
       <PaginationBar
         currentPage={page}
-        totalPages={collectionProdcts.totalPages || 1} />
+        totalPages={collectionProducts.totalPages || 1} />
     </div>)
 }
 
